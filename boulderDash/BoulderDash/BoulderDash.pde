@@ -5,7 +5,8 @@ void setup(){
 
 int i = 20;
 int j = 20;
-
+int di = 40;
+int dj = 40;
 void draw(){
   
     
@@ -20,15 +21,40 @@ void draw(){
       noStroke();
       
     }
-  }  
-   
-  }
+  } 
+  
+  /*if (i)
+    
+  */}
   
  void keyPressed(){
-  if (keyCode == RIGHT){i+=40;}
-  if (keyCode == LEFT){i-=40;}
-  if (keyCode == UP){j-=40;}
-  if (keyCode == DOWN){j+=40;}
+  if (keyCode == RIGHT){
+    if(i+di > width){
+      keyPressed = false;
+    } else {
+      i+=40;
+    }}
+  if (keyCode == LEFT){
+    if(i-di < 0){
+      keyPressed = false;
+    } else {
+      i-=40;
+    }}
+  if (keyCode == UP){
+    if(j-dj < 0) {
+      keyPressed = false;
+    } else {
+      j-=40;
+    }}
+  if (keyCode == DOWN){
+    if(j+dj > height){
+      keyPressed = false;
+  } else {
+      j+=dj;
+    }
+}
+  
+ 
  }
 
    /*strokeWeight(30);//l'epaisseur de la ligne
