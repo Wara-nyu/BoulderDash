@@ -8,9 +8,10 @@ void draw(){
     for (int x=0; x<width; x+=40)
   {
   
-      rect(i+3, y+3, 30, 30);
+      rect(x, y, 40, 40);
       fill(155,155,150);
-  }
+      stroke(0);
+    }
   }
 
    /*strokeWeight(30);//l'epaisseur de la ligne
