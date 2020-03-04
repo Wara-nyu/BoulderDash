@@ -1,32 +1,42 @@
 void setup(){
   size(600,600);//dimension de la fenêtre
-  background(0);
+  grille = new int[colonnes][lignes];
   
 }
-int x = 0;
-int y = 0;
-int i = 20;
-int j = 20;
-int pas = 40;
+int lignes = 10;
+int colonnes = 10;
+int [][] grille;
 
-int cell = 40;
-int [][] Grille = new int[height/cell][width/cell];
+//int i = 20;
+//int j = 20;
+//int pas = 40;
+
+
 
 void draw(){
-  for (int y=0; y<height; y++){ // y-> l'ordonnée y (h)
-    for (int x=0; x<width; x++)
-  {
-      ellipse(i , j , 20 , 20);
-       fill(155,155,150);
-      stroke(0);
+     background(0);
+  
+  float largeurColonne = width/colonnes;
+  float hauteurLigne = height/lignes;
+  fill(155);
+  
+  for (int y=0; y<lignes; y++){ // y-> l'ordonnée y (h)
+    for (int x=0; x<colonnes; x++){
+      float abs = x*largeurColonne;
+      float ord = y*hauteurLigne;
+      rect(abs+1, ord+1, largeurColonne-1, hauteurLigne-1);
+      
+
+      //stroke(0);
       //rect(x, y, 40, 40);
-      fill(0,255,0);
-      noStroke(); 
+      //fill(0,255,0);
+      //noStroke(); 
     }
-  }  
+  }        ellipse(largeurColonne/2, hauteurLigne/2, largeurColonne, largeurColonne);
+     
   } 
   
- void keyPressed(){
+ /*void keyPressed(){
   if (keyCode == RIGHT){
     if(i+pas > width){
       keyPressed = false;
@@ -55,4 +65,4 @@ void draw(){
       j+=pas;
   }
  }
-}
+}*/
