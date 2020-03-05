@@ -1,74 +1,75 @@
-
-
-void setup(){
-  size(600,600);//dimension de la fenêtre
-  grille = new int[colonnes][lignes];
-  grille[px][py] = 200;
-  pion = loadImage("personnage.png");
-  
-}
-int lignes = 10;
+int rangees = 10;
 int colonnes = 10;
-int [][] grille;
-
-//PImage pion;
 int px = 0;
 int py = 0;
-//int i = 20;
-//int j = 20;
-int pas = 90;
+int [][] grille;
+int d = 1;
 PImage pion;
-int x = 0;
-int y = 0;
 
+void setup()
+{size(600,600);
+ //smooth();
+ //noStroke();
+ grille = new int [colonnes][rangees];
+ pion = loadImage("personnage.png");
+ grille[0][0] = 1;
+}
+void draw ()
+{background(255);
 
-
-
-void draw(){
-     background(255);
-  
-  float largeurColonne = width/colonnes;
-  float hauteurLigne = height/lignes;
-  fill(200);
-  
-  for (int y=0; y<lignes; y++){ // y-> l'ordonnée y (h)
-    for (int x=0; x<colonnes; x++){
-      float abs = x*largeurColonne;
-      float ord = y*hauteurLigne;
-      rect(abs+1, ord+1, largeurColonne-1, hauteurLigne-1);
-    }
-  } 
-    image(pion,x,y,60,60);
-  } 
+ float largeurColonne = width/colonnes;
+ float hauteurRangee = height/rangees;
  
+ fill(0);
+ for(int i=0; i<colonnes; i++)
+     {for(int j=0; j<rangees; j++)
+       {float x = i*largeurColonne;
+        float y = j*hauteurRangee;
+         if (grille[i][j] == 1)
+         {px=i;
+          py=j;
+          image(pion,x+1,y+1,largeurColonne-3, hauteurRangee-3);
+         }
+         else
+         {
+       rect(x+1, y+1, largeurColonne-3, hauteurRangee-3);
+         }
+       }
+     }
   
- void keyPressed(){
-  if (keyCode == RIGHT){
-    if( x+pas > width){
-      keyPressed = false;
-    } else {
-      x+=pas;
+}
+
+void keyPressed()
+{if (keyCode == RIGHT)
+  {if (py+d > 15)
+    {keyPressed = false;
+    }
+   else
+    {px+=d;
     }
   }
-  if (keyCode == LEFT){
-    if(x-pas < 0){
-      keyPressed = false;
-    } else {
-      x-=pas;
+ if (keyCode == LEFT)
+  {if (px-d < 0)
+    {keyPressed = false;
+    }
+   else
+    {px-=d;
     }
   }
-  if (keyCode == UP){
-    if(y-pas < 0) {
-      keyPressed = false;
-    } else {
-      y-=pas;
+  if (keyCode == DOWN)
+  {if (py+d > 15)
+    {keyPressed = false;
+    }
+   else
+    {py+=d;
     }
   }
-  if (keyCode == DOWN){
-    if(y+pas > height){
-      keyPressed = false;
-  } else {
-      y+=pas;
+  if (keyCode == UP)
+  {if (py-d < 0)
+    {keyPressed = false;
+    }
+   else
+    {py-=d;
+    }
   }
- }
 }
