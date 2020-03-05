@@ -1,8 +1,10 @@
+
+
 void setup(){
   size(600,600);//dimension de la fenêtre
   grille = new int[colonnes][lignes];
   grille[px][py] = 200;
-  //pion = loadImage("bulma.jpg");
+  
 }
 int lignes = 10;
 int colonnes = 10;
@@ -26,12 +28,15 @@ void draw(){
   
   for (int y=0; y<lignes; y++){ // y-> l'ordonnée y (h)
     for (int x=0; x<colonnes; x++){
-      if grille[y][x] ;
       float abs = x*largeurColonne;
       float ord = y*hauteurLigne;
       rect(abs+1, ord+1, largeurColonne-1, hauteurLigne-1);
     }
-  }       
+  }   
+  
+  PImage pion;
+  pion = loadImage("bulma.jpg");
+  image(pion,10,10);
      
   } 
   
