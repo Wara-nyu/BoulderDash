@@ -4,6 +4,7 @@ void setup(){
   size(600,600);//dimension de la fenêtre
   grille = new int[colonnes][lignes];
   grille[px][py] = 200;
+  pion = loadImage("personnage.png");
   
 }
 int lignes = 10;
@@ -15,7 +16,11 @@ int px = 0;
 int py = 0;
 //int i = 20;
 //int j = 20;
-//int pas = 40;
+int pas = 90;
+PImage pion;
+int x = 0;
+int y = 0;
+
 
 
 
@@ -32,41 +37,38 @@ void draw(){
       float ord = y*hauteurLigne;
       rect(abs+1, ord+1, largeurColonne-1, hauteurLigne-1);
     }
-  }   
-  
-  PImage pion;
-  pion = loadImage("bulma.jpg");
-  image(pion,10,10);
-     
   } 
+    image(pion,x,y,60,60);
+  } 
+ 
   
- /*void keyPressed(){
+ void keyPressed(){
   if (keyCode == RIGHT){
-    if( > width){
+    if( x+pas > width){
       keyPressed = false;
     } else {
-      i+=pas;
+      x+=pas;
     }
   }
   if (keyCode == LEFT){
-    if(i-pas < 0){
+    if(x-pas < 0){
       keyPressed = false;
     } else {
-      i-=pas;
+      x-=pas;
     }
   }
   if (keyCode == UP){
-    if(j-pas < 0) {
+    if(y-pas < 0) {
       keyPressed = false;
     } else {
-      j-=pas;
+      y-=pas;
     }
   }
   if (keyCode == DOWN){
-    if(j+pas > height){
+    if(y+pas > height){
       keyPressed = false;
   } else {
-      j+=pas;
+      y+=pas;
   }
  }
-}*/
+}
